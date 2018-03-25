@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SampleRazorPages0.Data;
 using System;
 using System.Linq;
 
 namespace SampleEntityFrameworkInMemoryTests
 {
     [TestClass]
-    public class UnitTest1
+    public class InMemoryDbTests
     {
         [TestMethod]
         public void RunTest()

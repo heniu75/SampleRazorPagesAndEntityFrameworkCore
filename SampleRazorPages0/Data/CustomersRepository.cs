@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SampleEntityFrameworkInMemoryTests
+namespace SampleRazorPages0.Data
 {
     public interface IRepository<T>
     {
