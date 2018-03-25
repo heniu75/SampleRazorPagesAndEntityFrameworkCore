@@ -1,0 +1,34 @@
+﻿@page
+@model IndexModel
+@{
+    // ViewData is the only way to pass data between views (e.g. from this view to the
+    // _layout view  ... we are passing the title we wish to display on this page
+    ViewData["Title"] = "Customers Index";
+}
+
+<h2>Customers Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Customers[0].FirstName)</th>
+            <th>@Html.DisplayNameFor(m => m.Customers[0].LastName)</th>
+            <th>@Html.DisplayNameFor(m => m.Customers[0].BirthDate)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Customers.Any())
+        {
+            <tr><td colspan="3" align="center" valign="middle">No Customers!</td></tr>
+        }
+
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => customer.FirstName)</td>
+                <td>@Html.DisplayFor(m => customer.LastName)</td>
+                <td>@Html.DisplayFor(m => customer.BirthDate)</td>
+            </tr>
+        }
+    </tbody>
+</table>
