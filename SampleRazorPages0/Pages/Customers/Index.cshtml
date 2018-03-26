@@ -43,7 +43,9 @@ else
                         <td>@Html.DisplayFor(m => customer.FirstName)</td>
                         <td>@Html.DisplayFor(m => customer.LastName)</td>
                         <td>@Html.DisplayFor(m => customer.BirthDate)</td>
-                        <td><button class="btn btn-xs btn-danger" asp-page-handler="Delete" asp-route-id="@customer.Id">Delete</button></td>
+                        <td><button class="btn btn-xs btn-danger" asp-page-handler="Delete" asp-route-id="@customer.Id">Delete</button>
+                        &nbsp;
+                            <a class="btn btn-xs btn-danger" asp-page="Edit" asp-route-id="@customer.Id">Edit</a></td>
                     </tr>
                 }
             </tbody>
