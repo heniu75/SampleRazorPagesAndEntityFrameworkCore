@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int?}/{handler?}"
 @model IndexModel
 @{
     // ViewData is the only way to pass data between views (e.g. from this view to the
@@ -8,27 +8,47 @@
 
 <h2>Customers Index</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(m => m.Customers[0].FirstName)</th>
-            <th>@Html.DisplayNameFor(m => m.Customers[0].LastName)</th>
-            <th>@Html.DisplayNameFor(m => m.Customers[0].BirthDate)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (!Model.Customers.Any())
-        {
-            <tr><td colspan="3" align="center" valign="middle">No Customers!</td></tr>
-        }
+@if (Model.ShowMessage)
+{
+    <div class="alert alert-info alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @Model.MessageToDisplay
+    </div>
+}
 
-        @foreach (var customer in Model.Customers)
-        {
-            <tr>
-                <td>@Html.DisplayFor(m => customer.FirstName)</td>
-                <td>@Html.DisplayFor(m => customer.LastName)</td>
-                <td>@Html.DisplayFor(m => customer.BirthDate)</td>
-            </tr>
-        }
-    </tbody>
-</table>
+@if (!Model.HasCustomers)
+{
+    <p>No Customers Found!</p>
+}
+else
+{
+    // you may now have multiple buttons underneath the same form...
+    // this is because 'asp-page-handler' sets the form action for us
+    // you can therefore have as many form actions (handlers in cs code) as you need.
+    // also note ... asp-route-id knows how to route the id
+    <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Customers[0].FirstName)</th>
+                    <th>@Html.DisplayNameFor(m => m.Customers[0].LastName)</th>
+                    <th>@Html.DisplayNameFor(m => m.Customers[0].BirthDate)</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Customers)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => customer.FirstName)</td>
+                        <td>@Html.DisplayFor(m => customer.LastName)</td>
+                        <td>@Html.DisplayFor(m => customer.BirthDate)</td>
+                        <td><button class="btn btn-xs btn-danger" asp-page-handler="Delete" asp-route-id="@customer.Id">Delete</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+}
+
+<a asp-page="New" class="btn btn-default">Create new customer</a>

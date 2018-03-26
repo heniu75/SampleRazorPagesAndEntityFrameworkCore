@@ -23,5 +23,9 @@ namespace SampleRazorPages0.Data
 
         [Display(Name = "Birth Date")]
         public DateTime? BirthDate { get; set; }
+
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
     }
 }
