@@ -10,9 +10,11 @@ namespace SampleNetCoreCookies.Pages
     [ServiceFilter(typeof(ClassConsoleLogActionOneFilter))]
     public class IndexModel : PageModel
     {
+        [FromHeader]
+        public string TempEmailAddress { get; set; }
         public void OnGet()
         {
-
+            //TempEmailAddress
         }
     }
 }

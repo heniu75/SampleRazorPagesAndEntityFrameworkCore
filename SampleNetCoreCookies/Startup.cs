@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SampleNetCoreCookies.Data;
 using SampleNetCoreCookies.Filters;
 using SampleNetCoreCookies.Middleware;
 
@@ -41,6 +42,16 @@ namespace SampleNetCoreCookies
                     config.Filters.Add(new GlobalLoggingExceptionFilter(_loggerFactory));
                 });
 
+            // Service mappings
+            services.AddTransient<IRandomGenerator, RandomGenerator>();
+            services.AddTransient<IRepository<Address>, AddressRepository>();
+            services.AddTransient<IJanitor<Address>, AddressJanitor>();
+            services.AddSingleton<IDateProvider, DateProvider>();
+
+
+            // IOptions Configuration
+            services.Configure<CustomLiteDbContextOptions>(Configuration.GetSection("CustomLiteDbContextOptions"));
+            services.Configure<ApplicationOptions>(Configuration.GetSection("ApplicationOptions"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,9 +67,11 @@ namespace SampleNetCoreCookies
                 app.UseExceptionHandler("/Error");
             }
 
+            app.UseJanitorsMiddleware();
             app.UseAuthentication();
             app.UseStaticFiles();
             app.UseSetCookieMiddleware();
+            app.UseCreateAddressMiddleware();
             app.UseMvc();
         }
     }
