@@ -29,6 +29,10 @@ namespace SampleRazorPages0
                 options.UseInMemoryDatabase("name");
             });
             services.AddMvc();
+
+            // Map configuration to type (later, via DI, a class/model can use
+            // ... the IOptions<MyCustomConfig> ctor parameter to access this!
+            services.Configure<MyCustomConfig>(Configuration.GetSection("MyCustomConfigSection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SampleRazorPages0.Data;
 
 namespace SampleRazorPages0.Pages.Customers
@@ -12,10 +13,12 @@ namespace SampleRazorPages0.Pages.Customers
     public class IndexModel : PageModel
     {
         private readonly AppDbContext _db;
+        private readonly MyCustomConfig config;
 
-        public IndexModel(AppDbContext db)
+        public IndexModel(AppDbContext db, IOptions<MyCustomConfig> options)
         {
             this._db = db;
+            this.config = options.Value;
         }
 
         public IList<Customer> Customers { get; set; }
