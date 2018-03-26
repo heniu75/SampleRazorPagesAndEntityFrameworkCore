@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleRazorPages0", "SampleRazorPages0\SampleRazorPages0.csproj", "{75B52180-AD0E-428B-9AAF-E7AB79C5EDD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleEntityFrameworkInMemoryTests", "SampleEntityFrameworkInMemoryTests\SampleEntityFrameworkInMemoryTests.csproj", "{CAB0FD5B-F59A-492B-A13F-CFCA78CD36AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleEntityFrameworkInMemoryTests", "SampleEntityFrameworkInMemoryTests\SampleEntityFrameworkInMemoryTests.csproj", "{CAB0FD5B-F59A-492B-A13F-CFCA78CD36AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleNetCoreCookies", "SampleNetCoreCookies\SampleNetCoreCookies.csproj", "{6EC0A93A-9005-43C3-AC30-60F8FE75AEC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CAB0FD5B-F59A-492B-A13F-CFCA78CD36AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAB0FD5B-F59A-492B-A13F-CFCA78CD36AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAB0FD5B-F59A-492B-A13F-CFCA78CD36AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC0A93A-9005-43C3-AC30-60F8FE75AEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC0A93A-9005-43C3-AC30-60F8FE75AEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC0A93A-9005-43C3-AC30-60F8FE75AEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC0A93A-9005-43C3-AC30-60F8FE75AEC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

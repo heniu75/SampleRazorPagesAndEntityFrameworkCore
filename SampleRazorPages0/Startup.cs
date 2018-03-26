@@ -28,7 +28,15 @@ namespace SampleRazorPages0
             {
                 options.UseInMemoryDatabase("name");
             });
-            services.AddMvc();
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+               {
+                   // these are page route relative...
+                   // ... so the following line will allow a user ...
+                   // ... when navigating to /AllCustomers, this will route to /Customers/Index
+                   options.Conventions.AddPageRoute("/Customers/Index", "AllCustomers");
+               });
+            
 
             // Map configuration to type (later, via DI, a class/model can use
             // ... the IOptions<MyCustomConfig> ctor parameter to access this!
